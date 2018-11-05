@@ -1,0 +1,8 @@
+name: TrayTools
+author: nbdSteve
+version: 3.0
+main: com.nbdsteve.traytools.TrayTools
+commands:
+  tray:
+    usage: /<command>
+    description: Type '/tray help' for command help.

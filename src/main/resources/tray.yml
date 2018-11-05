@@ -1,0 +1,454 @@
+#
+# TrayTools tray.yml v3.0
+#
+# The list of blocks that will be broken by the TrayTools.
+# Make sure that you enter the correct minecraft name of an item.
+# See this link for more information about names: https://minecraft-ids.grahamedgecombe.com/
+whitelisted-block-list:
+- netherrack
+- dirt
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-1
+#
+tray-tool-1:
+  # The name of the item given to a player with the '/tray give' command.
+  name: "&e&lTRAY WAND &7(&63x3&7)"
+  #
+  # IMPORTANT: Make sure this is located in the Lore section of this configuration.
+  # And make sure it is unique to the 3x3 items, this will tell the plugin what it is looking for."
+  unique: "&cGutters I"
+  #
+  # this + blocks-mined-increment-id will replace that line in the lore when the player mines blocks.
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  #
+  # The radius for the pickaxe to break around the block, this can be even and odd. a radius of 1 is
+  # 1 block away from the mined block, so this is a 3x3x3 pickaxe; a radius of 2 = 5x5x5 etc.
+  radius: 1
+  #
+  # Enchantments that will be applied to the tool with the /tray give command
+  # IMPORTANT: make sure to use these enchantment names https://docs.oc.tc/reference/enchantments (vanilla names may not work!).
+  # ENCHANTMENT NAME-LEVEL
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  #
+  # Enchantment Lore, you can make this as many lines as you would like.
+  # In v3.0 you can put the %blocksMined% placeholder anywhere in the lore (must be after the 'blocks-mined-unique-line-id').
+  lore:
+  - "&cGutters I"
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+#
+
+#
+# The following configuration is for the item displayed in the GUI menu.
+# This item will not be given to the player, the tray-tool-1 item will be given.
+tray-tool-1-gui:
+  # If this item will be in the GUI.
+  enabled: true
+  name: "&e&lTRAY WAND &7(&63x3&7)"
+  unique: "&cGutters I"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters I"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$1,000,000"
+  - "&7&m---------------------------------"
+  # The actual item in the gui (this is the item that will be given to the player).
+  gui-item: diamond_pickaxe
+  # The slot in the GUI that this item will be.
+  gui-slot: 9
+  # The price of the TrayTool, this will be taken from the players account.
+  price: 1000000
+#
+# End configuration for tray-tool-1
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-2
+#
+tray-tool-2:
+  name: "&e&lTRAY WAND &7(&65x5&7)"
+  unique: "&cGutters II"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 2
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters II"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-2-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&65x5&7)"
+  unique: "&cGutters II"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters II"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$2,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 10
+  price: 2000000
+#
+# End configuration for tray-tool-2
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-3
+#
+tray-tool-3:
+  name: "&e&lTRAY WAND &7(&67x7&7)"
+  unique: "&cGutters III"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 3
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters III"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-3-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&67x7&7)"
+  unique: "&cGutters III"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters III"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$3,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 11
+  price: 3000000
+#
+# End configuration for tray-tool-3
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-4
+#
+tray-tool-4:
+  name: "&e&lTRAY WAND &7(&69x9&7)"
+  unique: "&cGutters IV"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 4
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters IV"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-4-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&69x9&7)"
+  unique: "&cGutters IV"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters IV"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$4,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 12
+  price: 4000000
+#
+# End configuration for tray-tool-4
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-5
+#
+tray-tool-5:
+  name: "&e&lTRAY WAND &7(&611x11&7)"
+  unique: "&cGutters V"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 5
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters V"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-5-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&611x11&7)"
+  unique: "&cGutters V"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters V"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$5,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 13
+  price: 5000000
+#
+# End configuration for tray-tool-5
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-6
+#
+tray-tool-6:
+  name: "&e&lTRAY WAND &7(&613x13&7)"
+  unique: "&cGutters VI"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 6
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VI"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-6-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&613x13&7)"
+  unique: "&cGutters VI"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VI"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$6,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 14
+  price: 6000000
+#
+# End configuration for tray-tool-6
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-7
+#
+tray-tool-7:
+  name: "&e&lTRAY WAND &7(&615x15&7)"
+  unique: "&cGutters VII"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 7
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VII"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-7-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&615x15&7)"
+  unique: "&cGutters VII"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VII"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$7,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 15
+  price: 7000000
+#
+# End configuration for tray-tool-7
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-8
+#
+tray-tool-8:
+  name: "&e&lTRAY WAND &7(&617x17&7)"
+  unique: "&cGutters VIII"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 8
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VIII"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-8-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&617x17&7)"
+  unique: "&cGutters VIII"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters VIII"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$8,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 16
+  price: 8000000
+#
+# End configuration for tray-tool-8
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# Start configuration for tray-tool-9
+#
+tray-tool-9:
+  name: "&e&lTRAY WAND &7(&619x19&7)"
+  unique: "&cGutters IX"
+  blocks-mined-unique-line-id: "&b&lBLOCKS MINED:"
+  blocks-mined-increment-id: "&3&l%blocksMined%"
+  radius: 9
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters IX"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+#
+
+#
+tray-tool-9-gui:
+  enabled: true
+  name: "&e&lTRAY WAND &7(&619x19&7)"
+  unique: "&cGutters IX"
+  enchantments:
+  - DIG_SPEED-5
+  - DURABILITY-3
+  lore:
+  - "&cGutters IX"
+  - "&7 "
+  - "&7&oThis pickaxe was manufactured"
+  - "&7&oto fix trays, use it wisely..."
+  - "&7 "
+  - "&b&lBLOCKS MINED: &3&l%blocksMined%"
+  - "&7 "
+  - "&7&m---------------------------------"
+  - "&a&lBUY PRICE: &f$9,000,000"
+  - "&7&m---------------------------------"
+  gui-item: diamond_pickaxe
+  gui-slot: 17
+  price: 9000000
+#
+# End configuration for tray-tool-9
+# -------------------------------------------------------------
