@@ -22,14 +22,15 @@ import java.util.List;
  * Class for the /tray command for the plugin
  */
 public class TrayCommand implements CommandExecutor {
-    //Register the main class
-    private Plugin pl = TrayTools.getPlugin(TrayTools.class);
-    //Register LoadProvideFiles instance
-    private LoadProvidedFiles lpf = ((TrayTools) pl).getFiles();
     //Register class so that command will work
     public TrayCommand(TrayTools pl) {
         this.pl = pl;
     }
+
+    //Register the main class
+    private Plugin pl = TrayTools.getPlugin(TrayTools.class);
+    //Register LoadProvideFiles instance
+    private LoadProvidedFiles lpf = ((TrayTools) pl).getFiles();
 
     public boolean onCommand(CommandSender s, Command c, String label, String[] args) {
         if (c.getName().equalsIgnoreCase("tray")) {

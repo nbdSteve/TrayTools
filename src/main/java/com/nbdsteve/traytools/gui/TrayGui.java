@@ -26,6 +26,7 @@ public class TrayGui {
 
     /**
      * Method to create the gui whenever the player runs the /tray command
+     *
      * @param p player, cannot be null
      */
     public void gui(Player p) {

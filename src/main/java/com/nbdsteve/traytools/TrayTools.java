@@ -56,6 +56,7 @@ public final class TrayTools extends JavaPlugin {
 
     /**
      * Get the LoadProvidedFiles instance that has been created
+     *
      * @return LoadProvidedFiles instance
      */
     public LoadProvidedFiles getFiles() {
@@ -64,6 +65,7 @@ public final class TrayTools extends JavaPlugin {
 
     /**
      * Get the servers economy
+     *
      * @return econ
      */
     public static Economy getEconomy() {
