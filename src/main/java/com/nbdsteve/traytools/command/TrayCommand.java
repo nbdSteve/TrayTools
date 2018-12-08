@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class for the /tray command for the plugin
+ * Class for the /tray command
  */
 public class TrayCommand implements CommandExecutor {
     //Register class so that command will work
@@ -142,7 +142,7 @@ public class TrayCommand implements CommandExecutor {
                                 s.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
                             }
                         } else {
-                            pl.getLogger().info("The level of tray you entered is invalid, enter a int between 1-5.");
+                            pl.getLogger().info("The level of tray you entered is invalid, enter a int between 1-9.");
                         }
                     }
                     try {
@@ -197,7 +197,7 @@ public class TrayCommand implements CommandExecutor {
                                 s.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
                             }
                         } else {
-                            pl.getLogger().info("The level you entered is invalid, the level must be between 1-5.");
+                            pl.getLogger().info("The level you entered is invalid, the level must be between 1-9.");
                         }
                     }
                 } else {
