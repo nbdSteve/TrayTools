@@ -2,12 +2,15 @@ package com.nbdsteve.traytools.event;
 
 import com.nbdsteve.traytools.TrayTools;
 import com.nbdsteve.traytools.file.LoadProvidedFiles;
+import com.nbdsteve.traytools.methods.AutoBlock;
 import com.nbdsteve.traytools.support.Factions;
 import com.nbdsteve.traytools.support.MassiveCore;
 import com.nbdsteve.traytools.support.WorldGuard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.WorldBorder;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,36 +46,20 @@ public class BlockBreak implements Listener {
             if (p.getInventory().getItemInHand().getItemMeta().hasLore()) {
                 ItemMeta toolMeta = p.getInventory().getItemInHand().getItemMeta();
                 List<String> toolLore = toolMeta.getLore();
-                String toolType;
+                String toolType = null;
                 //Get the level of tray from the tool lore
-                if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-1.unique")))) {
-                    toolType = "tray-tool-1";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-2.unique")))) {
-                    toolType = "tray-tool-2";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-3.unique")))) {
-                    toolType = "tray-tool-3";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-4.unique")))) {
-                    toolType = "tray-tool-4";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-5.unique")))) {
-                    toolType = "tray-tool-5";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-6.unique")))) {
-                    toolType = "tray-tool-6";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-7.unique")))) {
-                    toolType = "tray-tool-7";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-8.unique")))) {
-                    toolType = "tray-tool-8";
-                } else if (toolLore.contains(
-                        ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString("tray-tool-9.unique")))) {
-                    toolType = "tray-tool-9";
-                } else {
+                for (int i = 1; i < 10; i++) {
+                    String tool = "tray-tool-" + String.valueOf(i);
+                    try {
+                        lpf.getTray().getString(tool + ".unique");
+                        if (toolLore.contains(ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString(tool + ".unique")))) {
+                            toolType = tool;
+                        }
+                    } catch (Exception ex) {
+                        //Do nothing, this tool isn't active or doesn't exist
+                    }
+                }
+                if (toolType == null) {
                     return;
                 }
                 boolean wg = false;
@@ -105,7 +92,8 @@ public class BlockBreak implements Listener {
                 int x = -(lpf.getTray().getInt(toolType + ".radius"));
                 int rad = lpf.getTray().getInt(toolType + ".radius");
                 List<String> blocks = new ArrayList<String>();
-                String bmID = ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString(toolType + ".blocks-mined-unique-line-id"));
+                String bmID = ChatColor.translateAlternateColorCodes('&',
+                        lpf.getTray().getString(toolType + ".blocks-mined-unique-line-id"));
                 //Store the blacklisted blocks if that is enabled
                 if (lpf.getConfig().getBoolean("enable-block-whitelist")) {
                     for (String line : lpf.getTray().getStringList("whitelisted-block-list")) {
@@ -125,6 +113,8 @@ public class BlockBreak implements Listener {
                                 x++;
                             } else if (!blocks.contains(current)) {
                                 e.setCancelled(true);
+                                x++;
+                            } else if (isInsideBorder(e.getBlock().getRelative(x, y, z), e)) {
                                 x++;
                             } else if (lpf.getConfig().getBoolean("enable-natural-drops")) {
                                 //Don't run this if the block is air, don't increment the block count for air
@@ -148,8 +138,10 @@ public class BlockBreak implements Listener {
                                                 int temp = Integer.parseInt(mined) + 1;
                                                 // Change the line of lore with the new number of blocks mined
                                                 String bmI = ChatColor.translateAlternateColorCodes('&',
-                                                        lpf.getTray().getString(toolType + ".blocks-mined-increment-id")
-                                                                .replace("%blocksMined%", String.valueOf(temp)));
+                                                        lpf.getTray().getString(toolType + ".blocks-mined" +
+                                                                "-increment-id")
+                                                                .replace("%blocksMined%",
+                                                                        String.valueOf(temp)));
                                                 toolLore.set(i, (bmID + " " + bmI));
                                                 // Update the lore of the players item
                                                 toolMeta.setLore(toolLore);
@@ -186,7 +178,10 @@ public class BlockBreak implements Listener {
                                                 }
                                                 int temp = Integer.parseInt(mined) + 1;
                                                 //Change the line of lore with the new number of blocks mined
-                                                String bmI = ChatColor.translateAlternateColorCodes('&', lpf.getTray().getString(toolType + ".blocks-mined-increment-id").replace("%blocksMined%", String.valueOf(temp)));
+                                                String bmI = ChatColor.translateAlternateColorCodes('&',
+                                                        lpf.getTray().getString(toolType + ".blocks-mined" +
+                                                                "-increment-id").replace("%blocksMined%",
+                                                                String.valueOf(temp)));
                                                 toolLore.set(i, (bmID + " " + bmI));
                                                 //Update the lore of the players item
                                                 toolMeta.setLore(toolLore);
@@ -208,7 +203,38 @@ public class BlockBreak implements Listener {
                     z = -(lpf.getTray().getInt(toolType + ".radius"));
                     y++;
                 }
+                if (lpf.getConfig().getBoolean("enable-auto-group")) {
+                    new AutoBlock(p);
+                }
             }
         }
+    }
+
+    /**
+     * Method to check if a block is inside the world border or not
+     *
+     * @param b the block being checked
+     * @param e the event it is in
+     * @return boolean, true if the block is inside the border
+     */
+    private boolean isInsideBorder(Block b, BlockBreakEvent e) {
+        //Get the worldborder
+        WorldBorder wb = e.getBlock().getLocation().getWorld().getWorldBorder();
+        //Store the blocks location
+        int blockX = b.getX();
+        int blockZ = b.getZ();
+        //Get the actual worldborder size
+        double size = wb.getSize() / 2;
+        //Check if the block is inside, return true if it is
+        if (blockX > 0 && blockX > size - 1) {
+            return true;
+        } else if (blockX < 0 && blockX < (size * -1)) {
+            return true;
+        } else if (blockZ > 0 && blockZ > size - 1) {
+            return true;
+        } else if (blockZ < 0 && blockZ < (size * -1)) {
+            return true;
+        }
+        return false;
     }
 }

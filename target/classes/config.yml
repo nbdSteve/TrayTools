@@ -1,5 +1,5 @@
 #
-# TrayTools config.yml v3.0
+# TrayTools config.yml v3.1.2
 # Developed by nbdSteve
 #
 # Plugin Support Discord: https://discord.gg/j6Yj5B8
@@ -14,6 +14,10 @@ enable-natural-drops: false
 # Set this to false to disable the block whitelist.
 # The list of blocks can be edited in the tray.yml file.
 enable-block-whitelist: true
+#
+# If this feature is enabled the plugin will auto block:
+# diamond, coal and redstone
+enable-auto-group: true
 #
 # These are values for the GUI that will be opened with the /tray command.
 gui:
