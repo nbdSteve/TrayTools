@@ -9,3 +9,4 @@ com\nbdsteve\traytools\file\providedfile\GenerateProvidedFile.class
 com\nbdsteve\traytools\file\LoadProvidedFiles.class
 com\nbdsteve\traytools\file\LoadProvidedFiles$Files.class
 com\nbdsteve\traytools\event\gui\GuiClick.class
+com\nbdsteve\traytools\support\CoreProtect.class

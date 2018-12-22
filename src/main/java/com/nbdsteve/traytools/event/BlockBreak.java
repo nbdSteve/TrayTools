@@ -3,6 +3,7 @@ package com.nbdsteve.traytools.event;
 import com.nbdsteve.traytools.TrayTools;
 import com.nbdsteve.traytools.file.LoadProvidedFiles;
 import com.nbdsteve.traytools.methods.AutoBlock;
+import com.nbdsteve.traytools.support.CoreProtect;
 import com.nbdsteve.traytools.support.Factions;
 import com.nbdsteve.traytools.support.MassiveCore;
 import com.nbdsteve.traytools.support.WorldGuard;
@@ -64,6 +65,7 @@ public class BlockBreak implements Listener {
                 }
                 boolean wg = false;
                 boolean fac = false;
+                boolean cp = false;
                 //Figure out which plugins are being used and what to support
                 if (Bukkit.getPluginManager().getPlugin("WorldGuard") != null) {
                     wg = true;
@@ -71,6 +73,10 @@ public class BlockBreak implements Listener {
                         e.setCancelled(true);
                         return;
                     }
+                }
+                if (Bukkit.getPluginManager().getPlugin("CoreProtect") != null) {
+                    cp = true;
+                    CoreProtect.registerBreak(p.getName(), e.getBlock());
                 }
                 if (Bukkit.getPluginManager().getPlugin("MassiveCore") != null) {
                     MassiveCore.canBreakBlock(p, e.getBlock());
@@ -105,6 +111,10 @@ public class BlockBreak implements Listener {
                 while (y < (rad + 1)) {
                     while (z < (rad + 1)) {
                         while (x < (rad + 1)) {
+                            //Register the block being broken with CoreProtect
+                            if (cp) {
+                                CoreProtect.registerBreak(p.getName(), e.getBlock().getRelative(x, y, z));
+                            }
                             String current = e.getBlock().getRelative(x, y, z).getType().toString();
                             //Check the world to see if the block is protected and shouldn't be broken
                             if (wg && !WorldGuard.allowsBreak(e.getBlock().getRelative(x, y, z).getLocation())) {
