@@ -1,6 +1,6 @@
 name: TrayTools
 author: Nuer
-version: 3.1.4
+version: 3.1.4-[MC-1.13+]
 main: dev.nuer.tray.TrayTools
 commands:
   tray:
