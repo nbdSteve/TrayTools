@@ -1,7 +1,7 @@
 name: TrayTools
-author: nbdSteve
+author: Nuer
 version: ${project.version}
-main: com.nbdsteve.traytools.TrayTools
+main: dev.nuer.tray.TrayTools
 commands:
   tray:
     usage: /<command>
